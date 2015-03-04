@@ -1,0 +1,20 @@
+#registerPlayers {
+  text-align: center;
+  h1 {
+    margin: 0.6em 0 0.2em 0;
+  }
+
+  .name-input {
+    position: relative;
+    margin-bottom: 25px;
+    a.fa {
+      background: indianred;
+      color: #fff;
+      padding: 0.4em;
+      position: absolute;
+      top:0;
+      right: 0;
+    }
+  }
+
+}

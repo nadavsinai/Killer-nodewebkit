@@ -1,0 +1,27 @@
+#gameOn {
+  text-align: center;
+  .playerBox {
+    cursor: pointer;
+    position: relative;
+    p {
+      color: #fff;
+      font-size: 2em;
+    }
+    .x {
+      position: absolute;
+      width: 60%;
+    }
+
+  }
+  .removeLink {
+    cursor: default;
+  }
+}
+
+.killedModal {
+  h3 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1em;
+  }
+}

@@ -1,0 +1,45 @@
+h1, h2 , p.logo{
+  color: #fff;
+  font-family: 'Chewy', cursive !important;
+}
+h1 {
+  letter-spacing: 0.6rem;
+  font-size: 4em;
+  color: rgb(142, 214, 237);
+}
+
+input[type="text"] {
+  @include input;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+.vert-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.typed-cursor{
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}

@@ -1,0 +1,21 @@
+<div class="row" id="gameOn">
+  <div class="small-12 columns">
+
+    <h1>Start to Kill Pepole...</h1>
+
+    <div class="row">
+      <div ng-repeat="player in go.KillerService.getPlayers() track by $index"
+           class="small-4 columns playerBox"
+           ng-click="go.showModal(player)"
+           ng-class="{removeLink: player.killed}"
+           >
+        <img src="img/x.png" alt="killer"
+             class="x"
+             ng-show="player.killed"
+             />
+        <img ng-src="{{player.imgPath}}" alt="killer"/>
+        <p>{{player.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>

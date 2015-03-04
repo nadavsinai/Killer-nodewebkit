@@ -1,0 +1,14 @@
+@mixin input {
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid lightblue;
+  font-size: 4em;
+  color: #fff;
+  height: auto;
+  text-align: center;
+  transition: all 0.7s;
+  &:focus {
+    border-color: aquamarine;
+    background: transparent;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "word.killer",
+  "version": "1.0.0",
+  "description": "angular app",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "frame": false,
+    "title": "Word Killer",
+    "icon": "ninja.png",
+    "position": "mouse",
+    "width":1100,
+    "height":800
+
+  },
+  "author": "Netanel Basal",
+  "license": "MIT"
+}

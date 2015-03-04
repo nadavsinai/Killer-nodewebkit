@@ -1,0 +1,19 @@
+import registerPlayersController from './registerPlayers.controller.js';
+
+const RegisterPlayers = angular.module('killer')
+
+  .config(function( $stateProvider ) {
+
+    $stateProvider
+      .state('registerPlayers', {
+        url        : '/registerPlayers',
+        controller : 'registerPlayersController as rp',
+        templateUrl: 'client/registerPlayers/views/registerPlayers.tpl.html'
+      });
+  })
+
+  .controller('registerPlayersController', registerPlayersController);
+
+export default RegisterPlayers;
+
+

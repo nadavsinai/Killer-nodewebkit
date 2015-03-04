@@ -1,0 +1,27 @@
+@import url(http://fonts.googleapis.com/css?family=Chewy);
+
+.home {
+  text-align: center;
+  color: #fff;
+  span {
+    font-size: 2.3em;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.6em;
+  }
+  img {
+    width: 250px;
+    margin-top: 20px;
+  }
+}
+
+#prepare-game {
+  p:first-child {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  p:last-child {
+    font-size: 1.5em;
+  }
+
+}
+

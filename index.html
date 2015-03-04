@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Word Killer</title>
+    <!-- build:css app.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/wait-me/dist/waitMe.min.css"/>
+    <!-- endbower -->
+
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.css"/>
+    <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="build/main.css">
+    <!-- endbuild -->
+    <script>
+      var gui = require("nw.gui");
+      var win = gui.Window.get();
+
+      var mb = new gui.Menu({ type: "menubar" });
+
+      var helpMenu = new gui.Menu();
+      mb.append(new gui.MenuItem({
+        label:'WordKiller',
+        submenu: helpMenu
+      }));
+
+      helpMenu.append(new gui.MenuItem({
+        label:'New Game',
+        click: function() {
+          alert('New Game');
+        }
+      }))
+      mb.createMacBuiltin("Word Killer");
+      gui.Window.get().menu = mb;
+
+
+    </script>
+  </head>
+  <body ng-app="killer">
+
+    <div class="toolbar">
+      <a id="close">x</a>
+      <a id="maximize">+</a>
+      <a id="minimize">-</a>
+      <p class="logo"><img src="img/ninja.png" alt="killer"/><span>Word Killer</span></p>
+    </div>
+
+    <div class="row vert-center">
+      <main ui-view=""></main>
+    </div>
+
+    <!-- build:js app.min.js -->
+    <!-- bower:js -->
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/lodash/lodash.min.js"></script>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/wait-me/dist/waitMe.min.js"></script>
+    <!-- endbower -->
+    <script src="vendor/typed.js/js/typed.js"></script>
+    <script src="vendor/angular-foundation/mm-foundation-tpls.min.js"></script>
+    <script src="vendor/ng-messages/angular-messages.js"></script>
+    <script src="vendor/a0-angular-storage/dist/angular-storage.js"></script>
+    <script src="client/templates.js"></script>
+    <script src="build/bundle.js"></script>
+
+    <!-- endbuild -->
+    <script>
+      win.focus();
+      var closeWin = document.getElementById('close');
+      closeWin.addEventListener('click', function() {
+        win.close();
+      });
+
+      var minimizeWin = document.getElementById('minimize');
+      minimizeWin.addEventListener('click', function() {
+        win.minimize();
+      });
+
+      var maximizeWin = document.getElementById('maximize');
+      maximizeWin.addEventListener('click', function() {
+        if( win.isMaximized ) {
+          win.unmaximize()
+        } else {
+          win.maximize();
+        }
+      });
+
+      win.on('maximize', function() {
+        win.isMaximized = true;
+      });
+
+      win.on('maximize', function() {
+        win.isMaximized = true;
+      });
+
+      document.body.addEventListener('contextmenu', function( ev ) {
+        ev.preventDefault();
+        mb.popup(ev.x, ev.y);
+        return false;
+      });
+
+    </script>
+  </body>
+</html>

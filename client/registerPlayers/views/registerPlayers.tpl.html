@@ -1,0 +1,59 @@
+<div class="row" id="registerPlayers">
+  <div class="small-12 columns">
+
+    <section ng-show="rp.addPlayers">
+      <h1>Add the players:</h1>
+
+      <div ng-repeat="player in rp.KillerService.getPlayers() track by $index" class="name-input">
+        <input type="text"
+               placeholder="Player Name"
+               ng-model="player.name"
+               ng-focus-if="$index == 0"
+               style="margin-bottom: 0;"
+                />
+        <a class="fa fa-trash-o" ng-if="player.newPlayer" ng-click="rp.removePlayer(player)"></a>
+        <section style="text-align: left;">
+          <div class="fileUpload button tiny secondary" ng-class="{success: player.imgSet}">
+            <span>Upload Photo</span>
+            <input type="file"
+                   class="upload"
+                   ng-model="player.imgPath"
+                   img-upload
+                    />
+          </div>
+
+        </section>
+
+
+      </div>
+
+
+      <div class="alert-box warning" ng-if="rp.submitted && rp.emptyFields">
+        <p>All names are required</p>
+      </div>
+
+      <div class="alert-box warning" ng-if="rp.submitted && rp.sameName">
+        <p>Names must be unique</p>
+      </div>
+
+
+      <div>
+        <a ng-click="rp.nextPhase()" class="button success right">Continue</a>
+        <a ng-click="rp.addPlayer()" class="button info left">Add Player</a>
+      </div>
+
+    </section>
+
+
+    <section ng-hide="rp.addPlayers">
+      <h1 style="margin-bottom: 1em;">Create Players...</h1>
+      <div class="progress large secondary success radius round" style="height: 100px;">
+        <span class="meter" ng-style="{width: rp.progressWidth + '%'}"></span>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+
+

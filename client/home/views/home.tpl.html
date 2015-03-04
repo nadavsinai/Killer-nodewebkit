@@ -1,0 +1,55 @@
+<div class="row home">
+  <div class="small-12 columns">
+
+    <h1>Word Killer</h1>
+
+    <span class="typeEffect"></span>
+
+    <div>
+      <img src="img/ninja.png" alt="killer"/>
+    </div>
+
+    <div id="prepare-game">
+      <p>Prepare a Game for</p>
+
+      <form name="numPlayersForm" class="small-3 small-centered columns" novalidate>
+        <p>
+          <input type="text"
+                 ng-pattern="/^[0-9]+$/"
+                 ng-model="home.numPlayers"
+                 autofocus
+                 name="numPlayers"
+                 required
+                 ng-enter="home.nextPhase()"/>
+        </p>
+
+        <ng-messages for="numPlayersForm.$error" class="my-messages" ng-if="home.submitted">
+
+
+          <ng-message when="required" class="alert-box alert">This field is required</ng-message>
+
+
+          <ng-message when="pattern" class="alert-box alert">Only Numbers Allowed</ng-message>
+
+
+        </ng-messages>
+
+      </form>
+
+
+      <p>Players</p>
+
+    </div>
+
+
+  </div>
+
+</div>
+<script>
+  $(function(){
+    $(".typeEffect").typed({
+      strings: ["Talk yourself out of it"],
+      typeSpeed: 50
+    });
+  });
+</script>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Word Killer</title>
+    <link rel="stylesheet" href="app.min.css"/>
+    <script>
+      var gui = require("nw.gui");
+      var win = gui.Window.get();
+
+      var mb = new gui.Menu({ type: "menubar" });
+
+      var helpMenu = new gui.Menu();
+      mb.append(new gui.MenuItem({
+        label:'WordKiller',
+        submenu: helpMenu
+      }));
+
+      helpMenu.append(new gui.MenuItem({
+        label:'New Game',
+        click: function() {
+          alert('New Game');
+        }
+      }))
+      mb.createMacBuiltin("Word Killer");
+      gui.Window.get().menu = mb;
+
+
+    </script>
+  </head>
+  <body ng-app="killer">
+
+    <div class="toolbar">
+      <a id="close">x</a>
+      <a id="maximize">+</a>
+      <a id="minimize">-</a>
+      <p class="logo"><img src="img/ninja.png" alt="killer"/><span>Word Killer</span></p>
+    </div>
+
+    <div class="row vert-center">
+      <main ui-view=""></main>
+    </div>
+
+    <script src="app.min.js"></script>
+    <script>
+      win.focus();
+      var closeWin = document.getElementById('close');
+      closeWin.addEventListener('click', function() {
+        win.close();
+      });
+
+      var minimizeWin = document.getElementById('minimize');
+      minimizeWin.addEventListener('click', function() {
+        win.minimize();
+      });
+
+      var maximizeWin = document.getElementById('maximize');
+      maximizeWin.addEventListener('click', function() {
+        if( win.isMaximized ) {
+          win.unmaximize()
+        } else {
+          win.maximize();
+        }
+      });
+
+      win.on('maximize', function() {
+        win.isMaximized = true;
+      });
+
+      win.on('maximize', function() {
+        win.isMaximized = true;
+      });
+
+      document.body.addEventListener('contextmenu', function( ev ) {
+        ev.preventDefault();
+        mb.popup(ev.x, ev.y);
+        return false;
+      });
+
+    </script>
+  </body>
+</html>

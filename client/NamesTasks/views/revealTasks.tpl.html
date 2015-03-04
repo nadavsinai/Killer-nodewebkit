@@ -1,0 +1,23 @@
+<div ng-show="nt.callPlayer">
+
+  <h1>{{nt.player.name}}</h1>
+
+  <div class="text-center">
+    <button class="button success" ng-click="nt.showTask()">I am Here!</button>
+
+  </div>
+
+</div>
+
+<div ng-hide="nt.callPlayer">
+
+  <h1>Your Secret Task is:</h1>
+
+  <h3>Kill <span style="color: lightcoral;">{{nt.player.nameToKill}}</span> with the word <span style="color: lightcoral;">{{nt.player.word}}</span></h3>
+
+  <div class="text-center">
+    <button class="button success" ng-click="nt.nextPlayer()">Got It!</button>
+
+  </div>
+
+</div>
