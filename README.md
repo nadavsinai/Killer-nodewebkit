@@ -1,1 +1,1 @@
-# 6to5boilerplate
+# Word Killer built with nodewebkit
