@@ -17,8 +17,8 @@ var templateCache = require('gulp-angular-templatecache');
 var usemin = require('gulp-usemin');
 var wiredep = require('wiredep').stream;
 var minifyCSS = require('gulp-minify-css');
-var SASSDIR = './client/sass/main.scss';
-var JSDIR = './client/main.js';
+var SASSDIR = './app/sass/main.scss';
+var JSDIR = './app/main.js';
 var shell = require('gulp-shell');
 
 gulp.task('bundle', function () {
@@ -63,13 +63,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('templates', function () {
-    gulp.src('./client/**/views/**/**.html')
+    gulp.src('./app/**/views/**/**.html')
         .pipe(templateCache({
             standalone: true,
-            root: 'client',
+            root: 'app',
             module: 'templates'
         }))
-        .pipe(gulp.dest('./client'));
+        .pipe(gulp.dest('./app'));
 });
 
 gulp.task('usemin', function () {
@@ -85,10 +85,10 @@ gulp.task('usemin', function () {
 
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch(['./client/sass/**/*.scss', './client/**/sass/*.scss'], ['sass']),
-        gulp.watch('./client/**/*.js', ['bundle']),
+    gulp.watch(['./app/sass/**/*.scss', './app/**/sass/*.scss'], ['sass']),
+        gulp.watch('./app/**/*.js', ['bundle']),
         gulp.watch('./bower.json', ['bower']),
-        gulp.watch('./client/**/views/*.html', ['live'])
+        gulp.watch('./app/**/views/*.html', ['live'])
 });
 
 gulp.task('bower', function () {
@@ -105,7 +105,7 @@ gulp.task('copyDev', function () {
 gulp.task('copyProd', function () {
     gulp.src(['img/**/*'])
         .pipe(gulp.dest('./production/img'));
-    gulp.src(['package.json'])
+    gulp.src(['package.json','winGui.js'])
         .pipe(gulp.dest('./production'));
 });
 
