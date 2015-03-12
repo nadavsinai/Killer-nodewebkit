@@ -4,7 +4,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
-var to5ify = require('6to5ify');
+var karma = require('karma').server;
+var babelify = require('babelify');
+var envify = require('envify');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var sass = require('gulp-ruby-sass');
@@ -20,7 +22,7 @@ var minifyCSS = require('gulp-minify-css');
 var SASSDIR = './app/sass/main.scss';
 var JSDIR = './app/main.js';
 var shell = require('gulp-shell');
-
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 gulp.task('bundle', function () {
     var onError = function (err) {
         notify.onError({
@@ -31,7 +33,8 @@ gulp.task('bundle', function () {
         })(err);
     };
     browserify(JSDIR, {debug: true})
-        .transform(to5ify)
+        .transform(babelify.configure({ignore: /vendor\//}))
+        .transform(envify)
         .bundle()
         .pipe(plumber({errorHandler: onError}))
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
@@ -44,6 +47,21 @@ gulp.task('bundle', function () {
         .pipe(gulp.dest('./build'))
         .pipe(notify("Js Finished!"));
 });
+
+var nwPath = __dirname + '/node_modules/.bin/nw';
+gulp.task('test', function (done) {
+    process.env.NODE_ENV = 'test';
+    process.env.NODEWEBKIT_BIN = nwPath;
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: false,
+        autoWatch: true
+    }, done);
+    gulp.on('error', function (e) {
+        console.log(e.message);
+    })
+});
+
 
 gulp.task('sass', function () {
     var onError = function (err) {
@@ -88,7 +106,7 @@ gulp.task('watch', function () {
     gulp.watch(['./app/sass/**/*.scss', './app/**/sass/*.scss'], ['sass']),
         gulp.watch('./app/**/*.js', ['bundle']),
         gulp.watch('./bower.json', ['bower']),
-        gulp.watch('./app/**/views/*.html', ['live'])
+        gulp.watch('./app/**/views/*.html', ['templates'])
 });
 
 gulp.task('bower', function () {
@@ -110,6 +128,6 @@ gulp.task('copyProd', function () {
 });
 
 gulp.task('run', shell.task('./node_modules/nw/bin/nw'));
-gulp.task('dev', ['watch', 'copyDev', 'bundle', 'sass']);
+gulp.task('dev', ['watch', 'copyDev', 'bundle', 'sass','test']);
 gulp.task('prod', ['sass', 'bundle', 'templates', 'copyProd', 'usemin']);
 gulp.task('default', ['dev', 'run']);
