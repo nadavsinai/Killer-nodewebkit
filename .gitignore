@@ -1,4 +1,5 @@
 node_modules
+atlassian-ide-plugin.xml
 .idea
 build
 .sass-cache

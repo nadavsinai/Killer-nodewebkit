@@ -1,4 +1,4 @@
-import GameOnController from './GameOn.controller.js';
+import GameOnController from './gameOn.controller.js';
 import KilledModalController from './killed.controller.js';
 
 const GameOn = angular.module('killer')
