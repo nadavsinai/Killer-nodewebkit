@@ -4,8 +4,8 @@ class KillerService {
    * @param store
    */
     // @ngInject
-    constructor( store ) {
-    this.store = store;
+    constructor( aiStorage ) {
+    this.store = aiStorage;
     this.words = ['orange', 'nervous', 'snail', 'trust', 'TV', 'monkey', 'calculator', 'game', 'impulse', 'rabbits', 'boxes', 'chunky', 'excited', 'nose', 'yoke', 'wine', 'humdrum', 'woebegone', 'thankful', 'addicted', 'proud', 'crazy', 'dolls', 'stupid', 'advice', 'shaky', 'bikes', 'army', 'guide', 'ruthless', 'slow', 'dress', 'idiotic', 'amusing', 'abstracted', 'language', 'offer', 'jail', 'swing', 'psychotic', 'brass', 'sneeze', 'industry', 'glorious'];
     this.gameConfig = {
       numPlayers: '',

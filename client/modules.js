@@ -6,6 +6,6 @@ var modules = [
   'templates',
   'killer.services',
   'killer.directives'
-]
+];
 
 export default modules;

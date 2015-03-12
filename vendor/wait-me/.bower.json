@@ -30,6 +30,5 @@
   },
   "_source": "git://github.com/phpnetanel/waitMe.git",
   "_target": "*",
-  "_originalSource": "wait-me",
-  "_direct": true
+  "_originalSource": "wait-me"
 }

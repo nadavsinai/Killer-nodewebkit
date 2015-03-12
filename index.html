@@ -5,7 +5,7 @@
     <title>Word Killer</title>
     <!-- build:css app.min.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="vendor/wait-me/dist/waitMe.min.css"/>
+    <link rel="stylesheet" href="vendor/wait-me/dist/waitMe.min.css" />
     <!-- endbower -->
 
     <link rel="stylesheet" href="vendor/foundation/css/foundation.css"/>
@@ -29,8 +29,10 @@
         click: function() {
           alert('New Game');
         }
-      }))
-      mb.createMacBuiltin("Word Killer");
+      }));
+      if (process.platform =='darwin'){
+        mb.createMacBuiltin("Word Killer");
+      }
       gui.Window.get().menu = mb;
 
 
@@ -51,16 +53,21 @@
 
     <!-- build:js app.min.js -->
     <!-- bower:js -->
+    <script src="vendor/modernizr/modernizr.js"></script>
     <script src="vendor/jquery/dist/jquery.js"></script>
-    <script src="vendor/lodash/lodash.min.js"></script>
-    <script src="vendor/angular/angular.min.js"></script>
-    <script src="vendor/ui-router/release/angular-ui-router.js"></script>
     <script src="vendor/wait-me/dist/waitMe.min.js"></script>
-    <!-- endbower -->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/lodash/lodash.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-foundation/mm-foundation-tpls.js"></script>
+    <script src="vendor/angular-messages/angular-messages.js"></script>
+    <script src="vendor/angular-storage/dist/angular-storage.js"></script>
     <script src="vendor/typed.js/js/typed.js"></script>
-    <script src="vendor/angular-foundation/mm-foundation-tpls.min.js"></script>
-    <script src="vendor/ng-messages/angular-messages.js"></script>
-    <script src="vendor/a0-angular-storage/dist/angular-storage.js"></script>
+    <script src="vendor/fastclick/lib/fastclick.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="vendor/foundation/js/foundation.js"></script>
+    <!-- endbower -->
     <script src="client/templates.js"></script>
     <script src="build/bundle.js"></script>
 
