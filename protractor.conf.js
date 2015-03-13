@@ -28,6 +28,22 @@ exports.config = {
        // browser.ignoreSynchronization = true;
         browser.resetUrl = 'file://' + baseFile;
         browser.driver.get('file://' + baseFile);
+        browser.waitForUrlToChangeTo = function (urlRegex) {
+            var currentUrl, resolved;
+
+            return browser.getCurrentUrl().then(function storeCurrentUrl(url) {
+                    currentUrl = url;
+                    resolved = urlRegex.test(url);
+                }
+            ).then(function () {
+                    return (resolved) ? true : browser.wait(function waitForUrlToChangeTo() {
+                        return browser.getCurrentUrl().then(function compareCurrentUrl(url) {
+                            return urlRegex.test(url);
+                        });
+                    });
+                }
+            );
+        };
     },
     onComplete: function () {
     },
