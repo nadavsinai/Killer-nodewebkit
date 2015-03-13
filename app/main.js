@@ -4,6 +4,9 @@ require("../vendor/wait-me/dist/waitMe.min.js");
 const angular = require('angular');
 if (process.env.NODE_ENV === 'test') {
     require('angular-mocks');
+    window.sinon =require('sinon');
+    require('jasmine-sinon');
+    require('angular-debaser');
 }
 require("../vendor/lodash/lodash.js");
 require("../vendor/angular-ui-router/release/angular-ui-router.js");
