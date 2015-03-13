@@ -22,6 +22,8 @@ var minifyCSS = require('gulp-minify-css');
 var SASSDIR = './app/sass/main.scss';
 var JSDIR = './app/main.js';
 var shell = require('gulp-shell');
+var protractor = require("gulp-protractor").protractor;
+
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 gulp.task('bundle', function () {
     var onError = function (err) {
@@ -62,6 +64,16 @@ gulp.task('test', function (done) {
     })
 });
 
+gulp.task('e2e', function (done) {
+    gulp.src(['app/**/*.e2eSpec.js'])
+        .pipe(protractor({
+            configFile: "./protractor.conf.js",
+            args: []
+        }))
+        .on('error', function (e) {
+            throw e
+        })
+});
 
 gulp.task('sass', function () {
     var onError = function (err) {
