@@ -3,5 +3,5 @@ atlassian-ide-plugin.xml
 .idea
 build
 .sass-cache
-vendor
+/vendor/*
 production
