@@ -3,13 +3,13 @@ var nwBinary;
 
 switch (process.platform) {
     case 'darwin':
-        nwBinary = process.env.PWD + '/node_modules/nw/nwjs/nwjs.app/Contents/MacOS/nwjs';
+        nwBinary = './node_modules/nw/nwjs/nwjs.app/Contents/MacOS/nwjs';
         break;
     case 'linux':
-        nwBinary = process.env.PWD + '/node_modules/nw/bin/nw';
+        nwBinary = './node_modules/nw/bin/nw';
         break;
     case 'win32':
-        nwBinary = nwBinary = process.env.PWD + '/node_modules/nw/nwjs/nw.exe';
+        nwBinary  = './node_modules/nw/nwjs/nw.exe';
         break;
 
 }
